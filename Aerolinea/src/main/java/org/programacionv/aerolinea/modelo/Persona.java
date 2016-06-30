@@ -1,8 +1,10 @@
 package org.programacionv.aerolinea.modelo;
 
 public class Persona {
-	
-	// segundo cmtario
 
 	// primer comentario desdecliente
+	// cuarto comntario
+	// segundo cmtario
+	// tercer comentario
+
 }
