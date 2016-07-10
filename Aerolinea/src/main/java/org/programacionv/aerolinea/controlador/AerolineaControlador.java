@@ -1,4 +1,4 @@
-package org.programacionv.aerolinea.BaseDatos;
+package org.programacionv.aerolinea.controlador;
 
 import java.io.Serializable;
 import java.util.List;
