@@ -41,14 +41,14 @@ public class PasajeroControlador implements Serializable {
 
 	}
 
-	public void eliminarPersona(Pasajero pasajero) {
+	public void eliminarPasajero(Pasajero pasajero) {
 
 		pasajeroservice.delete(pasajero);
 		listaPasajeros.remove(pasajero);
 		actualPasajero = new Pasajero();
 	}
 
-	public void editarPersona(Pasajero pasajero) {
+	public void editarPasajero(Pasajero pasajero) {
 
 		pasajeroservice.update(pasajero);
 		pasajero = new Pasajero();
