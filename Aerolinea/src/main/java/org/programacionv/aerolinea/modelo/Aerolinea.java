@@ -36,5 +36,4 @@ public class Aerolinea {
 		this.listaAviones = listaAviones;
 	}
 	
-	//Clases nuevas
 }
