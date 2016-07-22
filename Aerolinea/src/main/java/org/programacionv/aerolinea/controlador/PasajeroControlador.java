@@ -34,7 +34,9 @@ public class PasajeroControlador implements Serializable {
 	}
 
 	public void addPasajero() {
-
+		
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,"PASAJERO INGRESADO", "Nombre: "+ actualPasajero.getNombre() +" "+ "CI: "+ actualPasajero.getCedula());
+	    FacesContext.getCurrentInstance().addMessage(null, msg);	
 		pasajeroservice.create(actualPasajero);
 		listaPasajeros.add(actualPasajero);
 		actualPasajero = new Pasajero();
@@ -43,6 +45,8 @@ public class PasajeroControlador implements Serializable {
 
 	public void eliminarPasajero(Pasajero pasajero) {
 
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR,"PASAJERO ELIMINADO", "Nombre: "+ actualPasajero.getNombre() +" "+ "CI: "+ actualPasajero.getCedula());
+	    FacesContext.getCurrentInstance().addMessage(null, msg);			
 		pasajeroservice.delete(pasajero);
 		listaPasajeros.remove(pasajero);
 		actualPasajero = new Pasajero();
@@ -50,6 +54,8 @@ public class PasajeroControlador implements Serializable {
 
 	public void editarPasajero(Pasajero pasajero) {
 
+		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN,"PASAJERO MODIFICADO", "Nombre: "+ actualPasajero.getNombre() +" "+ "CI: "+ actualPasajero.getCedula());
+	    FacesContext.getCurrentInstance().addMessage(null, msg);							
 		pasajeroservice.update(pasajero);
 		pasajero = new Pasajero();
 	}

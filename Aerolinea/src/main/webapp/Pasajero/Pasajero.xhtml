@@ -11,73 +11,102 @@
 
 		<h:form id="form">
 
+			<p:growl id="growl" showDetail="true" />
+			<h2>REGISTROSS</h2>
 
-			<h2>REGISTRO</h2>
+			<p:panelGrid id="grid1" layout="grid" columns="1" rows="2">
 
+				<p:panelGrid id="grid" columns="2"  layout="grid">
 
-			<p:panelGrid id="grid" columns="2" style="margin-top:50px">
+					<p:outputLabel value="Nombre:*"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}"
+						id="nom"></p:inputText>
 
+					<p:outputLabel value="Direccion:"></p:outputLabel>
+					<p:inputText
+						value="#{pasajeroControlador.actualPasajero.direccion}" id="dir"></p:inputText>
 
-
-				<p:outputLabel value="Nombre:*"></p:outputLabel>
-				<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}"
-					id="nom"></p:inputText>
-
-
-
-				<p:outputLabel value="Nombre:"></p:outputLabel>
-				<p:inputText value="#{personaController.actualPersona.nombre}"
-					id="na"></p:inputText>
-
-
-
-				<p:outputLabel value="Apellido:*"></p:outputLabel>
-				<p:inputText value="#{personaController.actualPersona.apellido}"
-					id="ape"></p:inputText>
+					<p:outputLabel value="Cuidad:*"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.ciudad}"
+						id="cui"></p:inputText>
 
 
+					<p:outputLabel value="Cedula"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.cedula}"
+						id="ci"></p:inputText>
 
-				<p:outputLabel value="Fecha nacimiento"></p:outputLabel>
-				<p:calendar id="itCalendario"
-					value="#{personaController.actualPersona.fechaNacimiento}"
-					navigator="true" />
+					<p:outputLabel value="Pais"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.pais}"
+						id="p"></p:inputText>
 
+					<p:outputLabel value="Telefono"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.telefono}"
+						id="tel"></p:inputText>
 
-				<p:outputLabel value="Direccion"></p:outputLabel>
-				<p:inputText value="#{personaController.actualPersona.direccion}"
-					id="dir"></p:inputText>
+					<p:outputLabel value="Celular"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.celular}"
+						id="cel"></p:inputText>
 
+					<p:outputLabel value="Correo"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.correo}"
+						id="cor"></p:inputText>
+
+					<p:outputLabel value="Sexo"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.sexo}"
+						id="sex"></p:inputText>
+
+				</p:panelGrid>
+
+				<p:commandButton value="Guardar" update="grid growl pasajero "
+					actionListener="#{pasajeroControlador.addPasajero()}"
+					style="width:96%">
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert"></p:confirm>
+				</p:commandButton>
 
 			</p:panelGrid>
-			<p:commandButton value="Guardar" update="grid growl persona "
-				actionListener="#{personaController.addPersona()}" style="width:96%">
-				<p:confirm header="Confirmation" message="Are you sure?"
-					icon="ui-icon-alert"></p:confirm>
-			</p:commandButton>
-
-
-			<p:dataTable id="persona" var="Persona"
-				value="#{personaController.listPersona}" editable="true"
-				editMode="cell" rowKey="#{Persona.id}" selectionMode="single">>
+			
+			<p:dataTable id="pasajero" var="Pasajero"
+				value="#{pasajeroControlador.listaPasajeros}" editable="true"
+				editMode="cell" rowKey="#{Pasajero.id}" selectionMode="single">>
 
 				<f:facet name="header">
-				BDD PERSONAS
+				BDD PASAJEROS
                 </f:facet>
-				<p:ajax event="cellEdit" listener="#{personaController.editcelda()}"
+
+
+				<p:ajax event="cellEdit"
+					listener="#{pasajeroControlador.editcelda()}"
 					update="form:growl   "></p:ajax>
 
 
 				<p:column headerText="Id">
-					<h:outputText value="#{Persona.id}" />
+					<h:outputText value="#{Pasajero.id}" />
+				</p:column>
+
+				<p:column headerText="Id">
+					<h:outputText value="#{Pasajero.id}" />
 				</p:column>
 
 				<p:column headerText="Cedula">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{Persona.cedula}" />
+							<h:outputText value="#{Pasajero.cedula}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="modelInput" value="#{Persona.cedula}"
+							<p:inputText id="modelInput" value="#{Pasajero.cedula}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Cedula">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Pasajero.cedula}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput1" value="#{Pasajero.cedula}"
 								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
@@ -86,63 +115,91 @@
 				<p:column headerText="Nombre">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{Persona.nombre}" />
+							<h:outputText value="#{Pasajero.nombre}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="modelInput1" value="#{Persona.nombre}"
+							<p:inputText id="modelInput2" value="#{Pasajero.nombre}"
 								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Apellido">
+				<p:column headerText="Nombre">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{Persona.apellido}" />
+							<h:outputText value="#{Pasajero.nombre}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="modelInput2" value="#{Persona.apellido}"
+							<p:inputText id="modelInput3" value="#{Pasajero.nombre}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Pais">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Pasajero.pais}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput4" value="#{Pasajero.pais}"
 								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>/
 
-				<p:column headerText="Direccion">
+
+
+				<p:column headerText="Telefono">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{Persona.direccion}" />
+							<h:outputText value="#{Pasajero.telefono}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:inputText id="modelInput3" value="#{Persona.direccion}"
+							<p:inputText id="modelInput5" value="#{Pasajero.telefono}"
 								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Fecha Nacimineto">
+				<p:column headerText="Direccion">
 					<p:cellEditor>
 						<f:facet name="output">
-							<h:outputText value="#{Persona.fechaNacimiento}" />
+							<h:outputText value="#{Pasajero.direccion}" />
 						</f:facet>
 						<f:facet name="input">
-							<p:calendar id="itCalendario" value="#{Persona.fechaNacimiento}"
-								navigator="true" />
+							<p:inputText id="modelInput6" value="#{Pasajero.direccion}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+				<p:column headerText="Correo">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Pasajero.correo}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput7" value="#{Pasajero.correo}"
+								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
 				</p:column>
 
+
 				<p:column headerText="Opciones">
 
 					<p:commandButton icon="ui-icon-pencil"
-						actionListener="#{personaController.editarPersona(Persona)}"
-						update="form:growl persona">
+						actionListener="#{pasajeroControlador.editarPasajero(Pasajero)}"
+						update="form:growl pasajero">
 						<p:confirm header="Confirmation" message="Are you sure?"
 							icon="ui-icon-alert"></p:confirm>
 					</p:commandButton>
+				</p:column>
 
+				<p:column>
 					<p:commandButton icon="ui-icon-trash"
-						actionListener="#{personaController.eliminarPersona(Persona)}"
-						update="form:growl persona">
+						actionListener="#{pasajeroControlador.eliminarPasajero(Pasajero)}"
+						update="form:growl pasajero">
 						<p:confirm header="Confirmation" message="Are you sure?"
 							icon="ui-icon-alert"></p:confirm>
 					</p:commandButton>
@@ -153,8 +210,8 @@
 
 
 
-
 		</h:form>
+
 	</ui:define>
 
 </ui:composition>
