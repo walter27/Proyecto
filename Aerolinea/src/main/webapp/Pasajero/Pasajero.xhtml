@@ -8,144 +8,153 @@
 	template="/WEB-INF/template/default.xhtml">
 
 	<ui:define name="content">
-	
-			<h:form id="form" >
 
-			
+		<h:form id="form">
+
+
 			<h2>REGISTRO</h2>
-			 
-					
+
+
 			<p:panelGrid id="grid" columns="2" style="margin-top:50px">
-               
-				 
-                
-					<p:outputLabel value="Nombre:*"></p:outputLabel>
-					<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}" id="nom"
-					></p:inputText>
-				   
- 
-
-					<p:outputLabel value="Nombre:"></p:outputLabel>
-					<p:inputText value="#{personaController.actualPersona.nombre}" id="na" ></p:inputText>
-				    
 
 
-					<p:outputLabel value="Apellido:*"></p:outputLabel>
-					<p:inputText value="#{personaController.actualPersona.apellido}" id="ape" ></p:inputText>
-				    
+
+				<p:outputLabel value="Nombre:*"></p:outputLabel>
+				<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}"
+					id="nom"></p:inputText>
 
 
-					<p:outputLabel value="Fecha nacimiento"></p:outputLabel>
-					<p:calendar id="itCalendario" 
-						value="#{personaController.actualPersona.fechaNacimiento}" navigator="true" />
-					
-					
-					<p:outputLabel value="Direccion"></p:outputLabel>
-					<p:inputText value="#{personaController.actualPersona.direccion}" id="dir"></p:inputText>
-				    				
 
-				</p:panelGrid>
-               <p:commandButton value="Guardar" update="grid growl persona " 
-				actionListener="#{personaController.addPersona()}" style="width:96%"> 
-				<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
-				</p:commandButton>
-</p:panel>
- 
-				<p:dataTable id="persona" var="Persona"
-					value="#{personaController.listPersona}" editable="true"
-					editMode="cell" rowKey="#{Persona.id}" selectionMode="single">>
+				<p:outputLabel value="Nombre:"></p:outputLabel>
+				<p:inputText value="#{personaController.actualPersona.nombre}"
+					id="na"></p:inputText>
+
+
+
+				<p:outputLabel value="Apellido:*"></p:outputLabel>
+				<p:inputText value="#{personaController.actualPersona.apellido}"
+					id="ape"></p:inputText>
+
+
+
+				<p:outputLabel value="Fecha nacimiento"></p:outputLabel>
+				<p:calendar id="itCalendario"
+					value="#{personaController.actualPersona.fechaNacimiento}"
+					navigator="true" />
+
+
+				<p:outputLabel value="Direccion"></p:outputLabel>
+				<p:inputText value="#{personaController.actualPersona.direccion}"
+					id="dir"></p:inputText>
+
+
+			</p:panelGrid>
+			<p:commandButton value="Guardar" update="grid growl persona "
+				actionListener="#{personaController.addPersona()}" style="width:96%">
+				<p:confirm header="Confirmation" message="Are you sure?"
+					icon="ui-icon-alert"></p:confirm>
+			</p:commandButton>
+
+
+			<p:dataTable id="persona" var="Persona"
+				value="#{personaController.listPersona}" editable="true"
+				editMode="cell" rowKey="#{Persona.id}" selectionMode="single">>
 
 				<f:facet name="header">
 				BDD PERSONAS
                 </f:facet>
-				<p:ajax event="cellEdit" listener="#{personaController.editcelda()}" update="form:growl   "></p:ajax>
+				<p:ajax event="cellEdit" listener="#{personaController.editcelda()}"
+					update="form:growl   "></p:ajax>
 
 
-					<p:column headerText="Id">
-						<h:outputText value="#{Persona.id}" />
-					</p:column>
+				<p:column headerText="Id">
+					<h:outputText value="#{Persona.id}" />
+				</p:column>
 
-					<p:column headerText="Cedula">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{Persona.cedula}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText id="modelInput" value="#{Persona.cedula}"
-									style="width:96%" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
+				<p:column headerText="Cedula">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Persona.cedula}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput" value="#{Persona.cedula}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-					<p:column headerText="Nombre">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{Persona.nombre}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText id="modelInput1" value="#{Persona.nombre}"
-									style="width:96%" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
+				<p:column headerText="Nombre">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Persona.nombre}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput1" value="#{Persona.nombre}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-					<p:column headerText="Apellido">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{Persona.apellido}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText id="modelInput2" value="#{Persona.apellido}"
-									style="width:96%" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>/
+				<p:column headerText="Apellido">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Persona.apellido}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput2" value="#{Persona.apellido}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>/
 
 				<p:column headerText="Direccion">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{Persona.direccion}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText id="modelInput3" value="#{Persona.direccion}"
-									style="width:96%" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Persona.direccion}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput3" value="#{Persona.direccion}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-					<p:column headerText="Fecha Nacimineto">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{Persona.fechaNacimiento}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:calendar id="itCalendario" value="#{Persona.fechaNacimiento}" navigator="true"/>
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
+				<p:column headerText="Fecha Nacimineto">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Persona.fechaNacimiento}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:calendar id="itCalendario" value="#{Persona.fechaNacimiento}"
+								navigator="true" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
 
-					<p:column headerText="Opciones">
+				<p:column headerText="Opciones">
 
-						<p:commandButton  icon="ui-icon-pencil"
-							actionListener="#{personaController.editarPersona(Persona)}"
-							update="form:growl persona">
-							<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
-							</p:commandButton>
-							
-						<p:commandButton icon="ui-icon-trash"
-							actionListener="#{personaController.eliminarPersona(Persona)}"
-							update="form:growl persona">
-							 <p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
-							</p:commandButton>
-							
-					</p:column>
+					<p:commandButton icon="ui-icon-pencil"
+						actionListener="#{personaController.editarPersona(Persona)}"
+						update="form:growl persona">
+						<p:confirm header="Confirmation" message="Are you sure?"
+							icon="ui-icon-alert"></p:confirm>
+					</p:commandButton>
 
-				</p:dataTable>											
-                
-</p:panelGrid>
+					<p:commandButton icon="ui-icon-trash"
+						actionListener="#{personaController.eliminarPersona(Persona)}"
+						update="form:growl persona">
+						<p:confirm header="Confirmation" message="Are you sure?"
+							icon="ui-icon-alert"></p:confirm>
+					</p:commandButton>
 
-    
-	  </h:form>
+				</p:column>
+
+			</p:dataTable>
+
+
+
+
+		</h:form>
 	</ui:define>
 
 </ui:composition>
