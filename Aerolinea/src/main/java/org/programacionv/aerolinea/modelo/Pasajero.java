@@ -2,7 +2,19 @@ package org.programacionv.aerolinea.modelo;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
+
+@Entity
+@Table (name= "PASAJERO")
 
 public class Pasajero {
 	
@@ -10,84 +22,102 @@ public class Pasajero {
 	private String nombre;
 	private String direccion;
 	private String ciudad;
-	private String nacionalidad;
-	private String codigoPostal;
+	private String cedula;
+	private String pais;
 	private String telefono;
 	private String celular;
-	private Email correo;
-	private List<Tarjeta> listaTarjetas;
-	private List<Tarjeta> listaReservas;
+	private String correo;
+	private String sexo;
+	
+	
 	public Pasajero() {
 		
 	}
+
+@Id
+@GeneratedValue (strategy = GenerationType.SEQUENCE)
+@Column (name= "ID_PSJ_PK",columnDefinition= "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	public String getDireccion() {
 		return direccion;
 	}
+
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+
 	public String getCiudad() {
 		return ciudad;
 	}
+
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
 	}
-	public String getNacionalidad() {
-		return nacionalidad;
+
+	public String getPais() {
+		return pais;
 	}
-	public void setNacionalidad(String nacionalidad) {
-		this.nacionalidad = nacionalidad;
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
-	public String getCodigoPostal() {
-		return codigoPostal;
-	}
-	public void setCodigoPostal(String codigoPostal) {
-		this.codigoPostal = codigoPostal;
-	}
+
 	public String getTelefono() {
 		return telefono;
 	}
+
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
+
 	public String getCelular() {
 		return celular;
 	}
+
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
-	public Email getCorreo() {
+
+	public String getCorreo() {
 		return correo;
 	}
-	public void setCorreo(Email correo) {
+
+	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public List<Tarjeta> getListaTarjetas() {
-		return listaTarjetas;
+
+	public String getSexo() {
+		return sexo;
 	}
-	public void setListaTarjetas(List<Tarjeta> listaTarjetas) {
-		this.listaTarjetas = listaTarjetas;
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
 	}
-	public List<Tarjeta> getListaReservas() {
-		return listaReservas;
+
+	@ Size(min=10, max=10)
+	@NotNull
+	public String getCedula() {
+		return cedula;
 	}
-	public void setListaReservas(List<Tarjeta> listaReservas) {
-		this.listaReservas = listaReservas;
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
-	
-	
 	
 	
 }

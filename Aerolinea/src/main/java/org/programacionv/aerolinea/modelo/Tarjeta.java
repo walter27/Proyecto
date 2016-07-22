@@ -13,7 +13,7 @@ public class Tarjeta {
 	private String tipoTarjeta;
 	private Date fechaVencimiento;
 	private Pasajero pasajero;
-	private List<Pago> listaPagos;
+	
 	public Tarjeta() {
 		
 	}
@@ -53,12 +53,6 @@ public class Tarjeta {
 	public void setPasajero(Pasajero pasajero) {
 		this.pasajero = pasajero;
 	}
-	public List<Pago> getListaPagos() {
-		return listaPagos;
-	}
-	public void setListaPagos(List<Pago> listaPagos) {
-		this.listaPagos = listaPagos;
-	}
-	
+
 	
 }

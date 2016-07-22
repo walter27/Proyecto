@@ -5,7 +5,7 @@ public class Asiento {
 	private int id;
 	private String fila;
 	private String letra;
-	private Vuelo vuelo;
+	
 	public Asiento() {
 		
 	}
@@ -26,12 +26,6 @@ public class Asiento {
 	}
 	public void setLetra(String letra) {
 		this.letra = letra;
-	}
-	public Vuelo getVuelo() {
-		return vuelo;
-	}
-	public void setVuelo(Vuelo vuelo) {
-		this.vuelo = vuelo;
 	}
 	
 	

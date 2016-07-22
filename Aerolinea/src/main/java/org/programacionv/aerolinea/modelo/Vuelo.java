@@ -7,16 +7,14 @@ public class Vuelo {
 	private int id;
 	private String numeroVuelo;
 	private Aerolinea aerolinea;
-	private List<Avion> listaAviones;
-	private Aeropuerto destino;
-	private Aeropuerto origen;
-	private List<Aeropuerto>listaAeropuertos;
+	private Avion avion;
 	private List<Tarifa>listaTarifas;
-	private List<Tarifa>listaOfertas;
 	private List<Asiento>listaAsientos;
-	private List<Dia>listaDiasLlegada;
-	private List<Dia>listaDiasSalida;
+	private List<Dia>listaDias;
 	private List<Reserva>listaReserva;
+	private List<Vuelo>listaEscalas;
+	private Vuelo vueloDestino;
+	private Vuelo vueloOrigen;
 	
 	public Vuelo() {
 		
@@ -46,36 +44,12 @@ public class Vuelo {
 		this.aerolinea = aerolinea;
 	}
 
-	public List<Avion> getListaAviones() {
-		return listaAviones;
+	public Avion getAvion() {
+		return avion;
 	}
 
-	public void setListaAviones(List<Avion> listaAviones) {
-		this.listaAviones = listaAviones;
-	}
-
-	public Aeropuerto getDestino() {
-		return destino;
-	}
-
-	public void setDestino(Aeropuerto destino) {
-		this.destino = destino;
-	}
-
-	public Aeropuerto getOrigen() {
-		return origen;
-	}
-
-	public void setOrigen(Aeropuerto origen) {
-		this.origen = origen;
-	}
-
-	public List<Aeropuerto> getListaAeropuertos() {
-		return listaAeropuertos;
-	}
-
-	public void setListaAeropuertos(List<Aeropuerto> listaAeropuertos) {
-		this.listaAeropuertos = listaAeropuertos;
+	public void setAvion(Avion avion) {
+		this.avion = avion;
 	}
 
 	public List<Tarifa> getListaTarifas() {
@@ -86,14 +60,6 @@ public class Vuelo {
 		this.listaTarifas = listaTarifas;
 	}
 
-	public List<Tarifa> getListaOfertas() {
-		return listaOfertas;
-	}
-
-	public void setListaOfertas(List<Tarifa> listaOfertas) {
-		this.listaOfertas = listaOfertas;
-	}
-
 	public List<Asiento> getListaAsientos() {
 		return listaAsientos;
 	}
@@ -102,20 +68,12 @@ public class Vuelo {
 		this.listaAsientos = listaAsientos;
 	}
 
-	public List<Dia> getListaDiasLlegada() {
-		return listaDiasLlegada;
+	public List<Dia> getListaDias() {
+		return listaDias;
 	}
 
-	public void setListaDiasLlegada(List<Dia> listaDiasLlegada) {
-		this.listaDiasLlegada = listaDiasLlegada;
-	}
-
-	public List<Dia> getListaDiasSalida() {
-		return listaDiasSalida;
-	}
-
-	public void setListaDiasSalida(List<Dia> listaDiasSalida) {
-		this.listaDiasSalida = listaDiasSalida;
+	public void setListaDias(List<Dia> listaDias) {
+		this.listaDias = listaDias;
 	}
 
 	public List<Reserva> getListaReserva() {
@@ -125,8 +83,31 @@ public class Vuelo {
 	public void setListaReserva(List<Reserva> listaReserva) {
 		this.listaReserva = listaReserva;
 	}
-	
-	
-	
+
+	public List<Vuelo> getListaEscalas() {
+		return listaEscalas;
+	}
+
+	public void setListaEscalas(List<Vuelo> listaEscalas) {
+		this.listaEscalas = listaEscalas;
+	}
+
+	public Vuelo getVueloDestino() {
+		return vueloDestino;
+	}
+
+	public void setVueloDestino(Vuelo vueloDestino) {
+		this.vueloDestino = vueloDestino;
+	}
+
+	public Vuelo getVueloOrigen() {
+		return vueloOrigen;
+	}
+
+	public void setVueloOrigen(Vuelo vueloOrigen) {
+		this.vueloOrigen = vueloOrigen;
+	}
+
+		
 
 }

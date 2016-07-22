@@ -8,9 +8,7 @@ public class Aeropuerto {
 	private String nombre;
 	private String ciudad;
 	private String pais;
-	private Vuelo vueloDestino;
-	private Vuelo vueloOrigen;
-	private List<Vuelo>listaEscalas;
+	
 	public Aeropuerto() {
 		
 	}
