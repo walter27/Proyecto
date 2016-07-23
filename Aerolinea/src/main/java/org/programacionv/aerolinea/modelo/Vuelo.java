@@ -2,24 +2,38 @@ package org.programacionv.aerolinea.modelo;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+//@Entity
+//@Table(name = "VUELO")
 public class Vuelo {
 
 	private int id;
 	private String numeroVuelo;
 	private Aerolinea aerolinea;
 	private Avion avion;
-	private List<Tarifa>listaTarifas;
-	private List<Asiento>listaAsientos;
-	private List<Dia>listaDias;
-	private List<Reserva>listaReserva;
-	private List<Vuelo>listaEscalas;
-	private Vuelo vueloDestino;
-	private Vuelo vueloOrigen;
-	
+	private List<Tarifa> listaTarifas;
+	private List<Asiento> listaAsientos;
+	private List<Dia> listaDias;
+	private List<Reserva> listaReserva;
+	private List<Aeropuerto> listaEscalas;
+	private Aeropuerto vueloDestino;
+	private Aeropuerto vueloOrigen;
+
 	public Vuelo() {
-		
+
 	}
 
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name = "ID_VUELf_PK", columnDefinition = "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
@@ -36,6 +50,8 @@ public class Vuelo {
 		this.numeroVuelo = numeroVuelo;
 	}
 
+	//@ManyToOne
+	//@JoinColumn(name = "AEROLINEA_FK")
 	public Aerolinea getAerolinea() {
 		return aerolinea;
 	}
@@ -84,30 +100,28 @@ public class Vuelo {
 		this.listaReserva = listaReserva;
 	}
 
-	public List<Vuelo> getListaEscalas() {
+	public List<Aeropuerto> getListaEscalas() {
 		return listaEscalas;
 	}
 
-	public void setListaEscalas(List<Vuelo> listaEscalas) {
+	public void setListaEscalas(List<Aeropuerto> listaEscalas) {
 		this.listaEscalas = listaEscalas;
 	}
 
-	public Vuelo getVueloDestino() {
+	public Aeropuerto getVueloDestino() {
 		return vueloDestino;
 	}
 
-	public void setVueloDestino(Vuelo vueloDestino) {
+	public void setVueloDestino(Aeropuerto vueloDestino) {
 		this.vueloDestino = vueloDestino;
 	}
 
-	public Vuelo getVueloOrigen() {
+	public Aeropuerto getVueloOrigen() {
 		return vueloOrigen;
 	}
 
-	public void setVueloOrigen(Vuelo vueloOrigen) {
+	public void setVueloOrigen(Aeropuerto vueloOrigen) {
 		this.vueloOrigen = vueloOrigen;
 	}
-
-		
 
 }

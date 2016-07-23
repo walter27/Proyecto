@@ -1,7 +1,14 @@
 package org.programacionv.aerolinea.modelo;
 
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+//@Entity
+//@Table(name = "AEROPUERTO")
 public class Aeropuerto {
 
 	private int id;
@@ -13,6 +20,9 @@ public class Aeropuerto {
 
 	}
 
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	//@Column(name = "ID_AERP_PK", columnDefinition = "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
@@ -44,5 +54,8 @@ public class Aeropuerto {
 	public void setPais(String pais) {
 		this.pais = pais;
 	}
+
+
+	
 
 }

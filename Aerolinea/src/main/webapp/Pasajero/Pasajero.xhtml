@@ -16,11 +16,9 @@
 
 			<p:panelGrid id="grid1" layout="grid" columns="1" rows="2">
 
-				<p:panelGrid id="grid" columns="2"  layout="grid">
+				<p:panelGrid id="grid" columns="2" layout="grid">
 
-					<p:outputLabel value="Nombre:*"></p:outputLabel>
-					<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}"
-						id="nom"></p:inputText>
+
 
 					<p:outputLabel value="Direccion:"></p:outputLabel>
 					<p:inputText
@@ -55,6 +53,10 @@
 					<p:inputText value="#{pasajeroControlador.actualPasajero.sexo}"
 						id="sex"></p:inputText>
 
+					<p:outputLabel value="Nombre"></p:outputLabel>
+					<p:inputText value="#{pasajeroControlador.actualPasajero.nombre}"
+						id="nom"></p:inputText>
+
 				</p:panelGrid>
 
 				<p:commandButton value="Guardar" update="grid growl pasajero "
@@ -65,7 +67,7 @@
 				</p:commandButton>
 
 			</p:panelGrid>
-			
+
 			<p:dataTable id="pasajero" var="Pasajero"
 				value="#{pasajeroControlador.listaPasajeros}" editable="true"
 				editMode="cell" rowKey="#{Pasajero.id}" selectionMode="single">>
@@ -84,9 +86,6 @@
 					<h:outputText value="#{Pasajero.id}" />
 				</p:column>
 
-				<p:column headerText="Id">
-					<h:outputText value="#{Pasajero.id}" />
-				</p:column>
 
 				<p:column headerText="Cedula">
 					<p:cellEditor>
@@ -100,29 +99,6 @@
 					</p:cellEditor>
 				</p:column>
 
-				<p:column headerText="Cedula">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{Pasajero.cedula}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="modelInput1" value="#{Pasajero.cedula}"
-								style="width:96%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
-
-				<p:column headerText="Nombre">
-					<p:cellEditor>
-						<f:facet name="output">
-							<h:outputText value="#{Pasajero.nombre}" />
-						</f:facet>
-						<f:facet name="input">
-							<p:inputText id="modelInput2" value="#{Pasajero.nombre}"
-								style="width:96%" />
-						</f:facet>
-					</p:cellEditor>
-				</p:column>
 
 				<p:column headerText="Nombre">
 					<p:cellEditor>
@@ -162,6 +138,8 @@
 					</p:cellEditor>
 				</p:column>
 
+
+
 				<p:column headerText="Direccion">
 					<p:cellEditor>
 						<f:facet name="output">
@@ -180,6 +158,18 @@
 						</f:facet>
 						<f:facet name="input">
 							<p:inputText id="modelInput7" value="#{Pasajero.correo}"
+								style="width:96%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+
+				<p:column headerText="Celular">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{Pasajero.celular}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText id="modelInput8" value="#{Pasajero.celular}"
 								style="width:96%" />
 						</f:facet>
 					</p:cellEditor>
