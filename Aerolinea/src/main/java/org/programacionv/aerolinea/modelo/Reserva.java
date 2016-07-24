@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -25,7 +26,7 @@ public class Reserva {
 	private String clave;
 	private String costoFinal;
 	private List<Pago> listaPagos;
-	private Pasajero pasajero;
+	private Set<Pasajero> listaPasajeros = new HashSet<Pasajero>();
 	private Set<Vuelo> listaVuelos = new HashSet<Vuelo>();
 
 	public Reserva() {
@@ -68,14 +69,14 @@ public class Reserva {
 		this.listaPagos = listaPagos;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "PASAJERO_FK", referencedColumnName = "ID_PSJ_PK")
-	public Pasajero getPasajero() {
-		return pasajero;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "RESERVA_PASAJERO", joinColumns = @JoinColumn(name = "ID_RESV_PK"), inverseJoinColumns = @JoinColumn(name = "ID_PSJ_PK"))
+	public Set<Pasajero> getListaPasajeros() {
+		return listaPasajeros;
 	}
 
-	public void setPasajero(Pasajero pasajero) {
-		this.pasajero = pasajero;
+	public void setListaPasajeros(Set<Pasajero> listaPasajeros) {
+		this.listaPasajeros = listaPasajeros;
 	}
 
 	@ManyToMany(mappedBy = "listaReservas")

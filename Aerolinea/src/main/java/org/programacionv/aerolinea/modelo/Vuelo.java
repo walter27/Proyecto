@@ -35,6 +35,7 @@ public class Vuelo {
 	private Set<Avion> listaAviones = new HashSet<Avion>();
 	private List<Aeropuerto> listaEscalas;
 	private Aeropuerto vueloOrigen;
+	private Vuelo vuelo;
 
 	public Vuelo() {
 
@@ -151,6 +152,16 @@ public class Vuelo {
 
 	public void setListaDiasLlegada(List<Dia> listaDiasLlegada) {
 		this.listaDiasLlegada = listaDiasLlegada;
+	}
+
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "ID_VUEL_PK")
+	public Vuelo getVuelo() {
+		return vuelo;
+	}
+
+	public void setVuelo(Vuelo vuelo) {
+		this.vuelo = vuelo;
 	}
 
 }

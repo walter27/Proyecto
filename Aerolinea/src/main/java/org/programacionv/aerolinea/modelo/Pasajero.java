@@ -1,6 +1,8 @@
 package org.programacionv.aerolinea.modelo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -28,6 +31,7 @@ public class Pasajero {
 	private String celular;
 	private String correo;
 	private String sexo;
+	private Set<Reserva> listaRservas = new HashSet<Reserva>();
 
 	public Pasajero() {
 
@@ -118,5 +122,13 @@ public class Pasajero {
 		this.cedula = cedula;
 	}
 
+	@ManyToMany(mappedBy = "listaPasajeros")
+	public Set<Reserva> getListaRservas() {
+		return listaRservas;
+	}
+
+	public void setListaRservas(Set<Reserva> listaRservas) {
+		this.listaRservas = listaRservas;
+	}
 
 }
