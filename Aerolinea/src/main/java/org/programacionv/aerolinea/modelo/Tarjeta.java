@@ -1,25 +1,37 @@
 package org.programacionv.aerolinea.modelo;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "TARJETA")
-public class Tarjeta {
+public class Tarjeta implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String nombre;
 	private String numero;
 	private String tipoTarjeta;
 	private Date fechaVencimiento;
 	private Pasajero pasajero;
+	private Set<Pago> pagos = new HashSet<Pago>();
 
 	public Tarjeta() {
 
@@ -76,6 +88,15 @@ public class Tarjeta {
 
 	public void setPasajero(Pasajero pasajero) {
 		this.pasajero = pasajero;
+	}
+
+	@ManyToMany(mappedBy = "listaTarjetas")
+	public Set<Pago> getPagos() {
+		return pagos;
+	}
+
+	public void setPagos(Set<Pago> pagos) {
+		this.pagos = pagos;
 	}
 
 }

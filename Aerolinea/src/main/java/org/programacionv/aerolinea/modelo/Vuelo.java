@@ -1,39 +1,48 @@
 package org.programacionv.aerolinea.modelo;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "VUELO")
+@Entity
+@Table(name = "VUELO")
 public class Vuelo {
 
 	private int id;
 	private String numeroVuelo;
 	private Aerolinea aerolinea;
-	private Avion avion;
-	private List<Tarifa> listaTarifas;
+	private List<Tarifa> listaTarifasIda;
+	private List<Tarifa> listaTarifasOfertas;
 	private List<Asiento> listaAsientos;
-	private List<Dia> listaDias;
-	private List<Reserva> listaReserva;
+	private List<Dia> listaDiasSalida;
+	private List<Dia> listaDiasLlegada;
+	private Set<Reserva> listaReservas = new HashSet<Reserva>();
+	private Set<Avion> listaAviones = new HashSet<Avion>();
 	private List<Aeropuerto> listaEscalas;
-	private Aeropuerto vueloDestino;
 	private Aeropuerto vueloOrigen;
 
 	public Vuelo() {
 
 	}
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	//@Column(name = "ID_VUELf_PK", columnDefinition = "NUMERIC (10,0)")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID_VUEL_PK", columnDefinition = "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
@@ -50,32 +59,17 @@ public class Vuelo {
 		this.numeroVuelo = numeroVuelo;
 	}
 
-	//@ManyToOne
-	//@JoinColumn(name = "AEROLINEA_FK")
-	public Aerolinea getAerolinea() {
-		return aerolinea;
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "RESERVA_VUELO", joinColumns = @JoinColumn(name = "ID_VUEL_PK"), inverseJoinColumns = @JoinColumn(name = "ID_RESV_PK"))
+	public Set<Reserva> getListaReservas() {
+		return listaReservas;
 	}
 
-	public void setAerolinea(Aerolinea aerolinea) {
-		this.aerolinea = aerolinea;
+	public void setListaReservas(Set<Reserva> listaReservas) {
+		this.listaReservas = listaReservas;
 	}
 
-	public Avion getAvion() {
-		return avion;
-	}
-
-	public void setAvion(Avion avion) {
-		this.avion = avion;
-	}
-
-	public List<Tarifa> getListaTarifas() {
-		return listaTarifas;
-	}
-
-	public void setListaTarifas(List<Tarifa> listaTarifas) {
-		this.listaTarifas = listaTarifas;
-	}
-
+	@OneToMany(mappedBy = "vuelo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Asiento> getListaAsientos() {
 		return listaAsientos;
 	}
@@ -84,22 +78,55 @@ public class Vuelo {
 		this.listaAsientos = listaAsientos;
 	}
 
-	public List<Dia> getListaDias() {
-		return listaDias;
+	@OneToMany(mappedBy = "vueloIda", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<Tarifa> getListaTarifasIda() {
+		return listaTarifasIda;
 	}
 
-	public void setListaDias(List<Dia> listaDias) {
-		this.listaDias = listaDias;
+	public void setListaTarifasIda(List<Tarifa> listaTarifasIda) {
+		this.listaTarifasIda = listaTarifasIda;
 	}
 
-	public List<Reserva> getListaReserva() {
-		return listaReserva;
+	@OneToMany(mappedBy = "vueloOfertas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<Tarifa> getListaTarifasOfertas() {
+		return listaTarifasOfertas;
 	}
 
-	public void setListaReserva(List<Reserva> listaReserva) {
-		this.listaReserva = listaReserva;
+	public void setListaTarifasOfertas(List<Tarifa> listaTarifasOfertas) {
+		this.listaTarifasOfertas = listaTarifasOfertas;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "AEROLINEA_FK")
+	public Aerolinea getAerolinea() {
+		return aerolinea;
+	}
+
+	public void setAerolinea(Aerolinea aerolinea) {
+		this.aerolinea = aerolinea;
+	}
+
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "AVION_VUELO", joinColumns = @JoinColumn(name = "ID_VUEL_PK"), inverseJoinColumns = @JoinColumn(name = "ID_AVN_PK"))
+	public Set<Avion> getListaAviones() {
+		return listaAviones;
+	}
+
+	public void setListaAviones(Set<Avion> listaAviones) {
+		this.listaAviones = listaAviones;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_AERP_PK")
+	public Aeropuerto getVueloOrigen() {
+		return vueloOrigen;
+	}
+
+	public void setVueloOrigen(Aeropuerto vueloOrigen) {
+		this.vueloOrigen = vueloOrigen;
+	}
+
+	@OneToMany(mappedBy = "vueloEscalas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Aeropuerto> getListaEscalas() {
 		return listaEscalas;
 	}
@@ -108,20 +135,22 @@ public class Vuelo {
 		this.listaEscalas = listaEscalas;
 	}
 
-	public Aeropuerto getVueloDestino() {
-		return vueloDestino;
+	@OneToMany(mappedBy = "vueloLlegada", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<Dia> getListaDiasSalida() {
+		return listaDiasSalida;
 	}
 
-	public void setVueloDestino(Aeropuerto vueloDestino) {
-		this.vueloDestino = vueloDestino;
+	public void setListaDiasSalida(List<Dia> listaDiasSalida) {
+		this.listaDiasSalida = listaDiasSalida;
 	}
 
-	public Aeropuerto getVueloOrigen() {
-		return vueloOrigen;
+	@OneToMany(mappedBy = "vueloSalida", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	public List<Dia> getListaDiasLlegada() {
+		return listaDiasLlegada;
 	}
 
-	public void setVueloOrigen(Aeropuerto vueloOrigen) {
-		this.vueloOrigen = vueloOrigen;
+	public void setListaDiasLlegada(List<Dia> listaDiasLlegada) {
+		this.listaDiasLlegada = listaDiasLlegada;
 	}
 
 }

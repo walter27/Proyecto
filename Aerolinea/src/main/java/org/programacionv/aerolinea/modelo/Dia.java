@@ -1,14 +1,18 @@
 package org.programacionv.aerolinea.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "DIA")
+@Entity
+@Table(name = "DIA")
 public class Dia {
 
 	private int id;
@@ -20,9 +24,9 @@ public class Dia {
 
 	}
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	//@Column(name = "ID_DIA_PK", columnDefinition = "NUMERIC (10,0)")
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@Column(name = "ID_DIA_PK", columnDefinition = "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
@@ -31,6 +35,8 @@ public class Dia {
 		this.id = id;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "VUELO_LLEGADA_FK")
 	public Vuelo getVueloLlegada() {
 		return vueloLlegada;
 	}
@@ -39,6 +45,8 @@ public class Dia {
 		this.vueloLlegada = vueloLlegada;
 	}
 
+	@ManyToOne
+	@JoinColumn(name = "VUELO_SALIDA_FK")
 	public Vuelo getVueloSalida() {
 		return vueloSalida;
 	}
@@ -47,6 +55,8 @@ public class Dia {
 		this.vueloSalida = vueloSalida;
 	}
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_HORA_PK")
 	public Hora getHora() {
 		return hora;
 	}

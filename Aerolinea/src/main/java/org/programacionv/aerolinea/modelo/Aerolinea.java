@@ -13,8 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "AEROLINEA")
+@Entity
+@Table(name = "AEROLINEA")
 public class Aerolinea {
 
 	private int id;
@@ -26,9 +26,9 @@ public class Aerolinea {
 
 	}
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
-	//@Column(name = "ID_AERL_PK", columnDefinition = "NUMERIC (10,0)")
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID_AERL_PK", columnDefinition = "NUMERIC (10,0)")
 	public int getId() {
 		return id;
 	}
@@ -45,7 +45,7 @@ public class Aerolinea {
 		this.nombre = nombre;
 	}
 
-	//@OneToMany(mappedBy = "aerolinea", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "aerolinea", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Vuelo> getListaVuelos() {
 		return listaVuelos;
 	}
@@ -54,7 +54,7 @@ public class Aerolinea {
 		this.listaVuelos = listaVuelos;
 	}
 
-	//@OneToMany(mappedBy = "aerolinea", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "aerolinea", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Avion> getListaAviones() {
 		return listaAviones;
 	}
