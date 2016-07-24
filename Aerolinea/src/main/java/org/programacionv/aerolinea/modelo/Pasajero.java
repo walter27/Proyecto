@@ -112,8 +112,6 @@ public class Pasajero {
 		this.sexo = sexo;
 	}
 
-	@Size(min = 10, max = 10)
-	@NotNull
 	public String getCedula() {
 		return cedula;
 	}

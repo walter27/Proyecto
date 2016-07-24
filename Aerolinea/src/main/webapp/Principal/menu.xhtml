@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:form>
+		<p:menubar class="menubar">
+			<p:submenu label="Pasajeros" icon="ui-icon-person">
+				<p:menuitem value="Crear" icon="ui-icon-contact"
+					url="/Pasajero/Pasajero.xhtml" />
+				<p:menuitem value="Ver" icon="ui-icon-search" url="#" />
+
+			</p:submenu>
+
+			<p:submenu label="Reservas Y Servicios" icon="ui-icon-cart">
+				<p:menuitem value="Crear" url="#" icon="ui-icon-plus" />
+				<p:menuitem value="Ver" url="#" icon="ui-icon-clipboard" />
+			</p:submenu>
+
+			<p:submenu label="Viajes" icon="ui-icon-suitcase">
+				<p:menuitem value="Aerolineas" url="#" icon="ui-icon-flag" />
+				<p:menuitem value="Aeropuertos" url="#" icon="ui-icon-home" />
+				<p:menuitem value="Horarios" url="#" icon="ui-icon-clock" />
+			</p:submenu>
+
+			<p:submenu label="Quit" url="#" icon="ui-icon-closethick">
+				<p:menuitem value="Login" url="#" icon="ui-icon-key" />
+			</p:submenu>
+
+		</p:menubar>
+	</h:form>
+</ui:composition>

@@ -20,27 +20,29 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core">
 
 
 
 <h:head>
 	<title>AEROLINEAS.COM</title>
-	
+
 	<h:outputStylesheet name="css/primefaces.css" />
 
 </h:head>
 
-<body >
-                                                                   
-        
-	<div id="container" >
+<body>
+
+
+	<div id="container">
 		<div class="row"></div>
-		<img src="../../resources/icons/logo.png" alt="Icon" style="float:right;width:356px;height:70px;"/>		
-		
-		<div id="content">		
-							 
-       	<ui:insert name="content">
+		<img src="../../resources/icons/logo.png" alt="Icon"
+			style="float: right; width: 356px; height: 70px;" />
+
+		<div id="content">
+			<ui:include src="/Principal/menu.xhtml"  />
+
+			<ui:insert name="content">
 			
                     [Template content will be inserted here]
                     
@@ -48,14 +50,12 @@ xmlns:f="http://java.sun.com/jsf/core">
 		</div>
 		<div id="aside"></div>
 		<div id="footer">
-		
-		<footer>
-		Aerolineas.com © 2016
- |Ud. está en un SITIO SEGURO| 
-		<p>Copyright© WalterR-SebastianL-NatalyS-CristianL</p>
-		</footer>
+
+			<footer> Aerolineas.com © 2016 |Ud. está en un SITIO SEGURO|
+			<p>Copyright© WalterR-SebastianL-NatalyS-CristianL</p>
+			</footer>
 		</div>
-		
+
 	</div>
 
 </body>
