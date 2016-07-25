@@ -57,16 +57,17 @@ a:hover {
 }
 h1 {
   font-family: "Courier New", Times, serif;
-  color:#64b5f0;
-  font-size: 3.00em;
-  overflow: visible;
+  color:#408080;  
+  text-align:center;
+  font-size: 2.75em;
+  
 }
 h2 {
   font-family: 'Open Sans', sans-serif;
-  clear: both;
-  text-align:rigth;
+  clear: both;  
+  text-align:center;
   color:#838384;
-  font-size: 0.95em;
+  font-size: 1.15em;
 }
 h3 {
 	font-family: "Courier New", Times, serif;
@@ -97,9 +98,8 @@ span.invalid {
 	  	
 }
 
-.panelGrid {
-	
-	padding: 0em;
+.panelGrid {	
+	padding: 2em;
 }
 
 form {
@@ -108,8 +108,6 @@ form {
   width: 940px;
   border: 0px solid #408080;
 }
-
-
 .button
 {	
 	font-family: "Courier New", Times, serif;
@@ -117,7 +115,8 @@ form {
 	padding: 5px 5px;
     text-align: center;    
     display: inline-block;
-    font-size: 16px;			 
+    font-size: 16px;	
+    direction:center;		 
     border-bottom-right-radius: 3px solid #aaa;
     background: #408080;
     border-bottom-left-radius: 3px solid #aaa; 
@@ -156,8 +155,9 @@ label {
   padding-top: 0.2em;
   text-align: right;
   font-style: italic;
-  color:#f3b034;
+  color:#808080;
   font-family: "Courier New", Times, serif;
+  
   
 }
 input {

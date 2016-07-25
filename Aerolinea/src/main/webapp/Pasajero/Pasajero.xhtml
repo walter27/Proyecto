@@ -5,15 +5,20 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	template="/WEB-INF/template/default.xhtml">
+	template="/WEB-INF/template/defaultPasajero.xhtml">
 
 	<ui:define name="content">
 		
 
 				<h:form id="form">
 					<p:growl id="growl" showDetail="true" sticky="true" />
-					<p:panelGrid id="grid" columns="2">
-
+										
+					<h:panelGrid id="grid0" columns="2"   style="width:90">       				       			
+					
+					<h:panelGrid id="grid1" columns="1" >
+                    
+                                        
+					    <h:panelGrid id="grid" columns="2"  >
 						<p:outputLabel value="Cedula:*"></p:outputLabel>
 						<p:inputText value="#{pasajeroControlador.actualPasajero.cedula}"></p:inputText>
 
@@ -47,148 +52,26 @@
 						<p:outputLabel value="Sexo"></p:outputLabel>
 						<p:inputText value="#{pasajeroControlador.actualPasajero.sexo}"></p:inputText>
 
-
-					</p:panelGrid>
-
-					<p:commandButton value="Guardar" update="grid growl persona "
-						actionListener="#{pasajeroControlador.addPasajero()}" />
-
-					<p:dataTable id="persona" var="Pasajero"
-						tableStyle="table-layout:auto"
-						value="#{pasajeroControlador.listaPasajeros}" editable="true"
-						editMode="cell" rowKey="#{Pasajero.id}" selectionMode="single">
-
-						<p:ajax event="cellEdit"
-							listener="#{pasajeroControlador.editcelda()}"></p:ajax>
-
-
-						<p:column headerText="Id">
-							<h:outputText value="#{Pasajero.id}" />
-						</p:column>
-
-						<p:column headerText="Cedula">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.cedula}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput" value="#{Pasajero.cedula}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Nombre">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.nombre}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput1" value="#{Pasajero.nombre}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Pais">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.pais}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput2" value="#{Pasajero.pais}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>/
-						
-						<p:column headerText="Ciudad">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.ciudad}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput8" value="#{Pasajero.ciudad}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Direccion">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.direccion}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput3" value="#{Pasajero.direccion}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Telefono">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.telefono}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput4" value="#{Pasajero.telefono}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Celular">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.celular}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput5" value="#{Pasajero.celular}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Correo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.correo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput6" value="#{Pasajero.correo}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column headerText="Sexo">
-							<p:cellEditor>
-								<f:facet name="output">
-									<h:outputText value="#{Pasajero.sexo}" />
-								</f:facet>
-								<f:facet name="input">
-									<p:inputText id="modelInput7" value="#{Pasajero.sexo}"
-										style="width:96%" />
-								</f:facet>
-							</p:cellEditor>
-						</p:column>
-
-						<p:column>
-
-							<p:commandButton icon="ui-icon-trash"
-								actionListener="#{pasajeroControlador.eliminarPasajero(Pasajero)}"
-								onclick="return confirm('Seguro que deseea eliminar ')"
-								update="form persona"></p:commandButton>
-
-							<p:commandButton icon="ui-icon-pencil"
-								actionListener="#{pasajeroControlador.editarPasajero(Pasajero)}"
-								onclick="return confirm('Seguro que deseea actualizar ')"
-								update="form persona "></p:commandButton>
-						</p:column>
-
-					</p:dataTable>
-
+                        <p:outputLabel value=""></p:outputLabel>
+                        <p:commandButton value="REGISTRAR" update="grid growl" class="button"
+						actionListener="#{pasajeroControlador.addPasajero()}"  style="width:100%">
+						<p:confirm header="Confirmation" message="Are you sure?" icon="ui-icon-alert"></p:confirm>
+				        </p:commandButton>						
+											
+					</h:panelGrid>
+		
+					</h:panelGrid>
+					<p:galleria panelWidth="643" panelHeight="328" showCaption="false">
+					<p:graphicImage url="/resources/icons/psj.jpg" styleClass="content" />
+					<p:graphicImage url="/resources/icons/psj1.jpg" styleClass="content" />
+					<p:graphicImage url="/resources/icons/psj2.jpg" styleClass="content" />
+			</p:galleria>
+					</h:panelGrid>
+                  
+                  <h1> 
+                  
+                  </h1>
+					
 				</h:form>
 		
 	</ui:define>
