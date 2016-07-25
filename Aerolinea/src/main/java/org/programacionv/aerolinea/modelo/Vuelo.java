@@ -34,7 +34,7 @@ public class Vuelo {
 	private Hora horaLlegada;
 	private Set<Reserva> listaReservas = new HashSet<Reserva>();
 	private Set<Avion> listaAviones = new HashSet<Avion>();
-	private List<Aeropuerto> listaEscalas;
+	private int numEscalas;
 	private Aeropuerto vueloOrigen;
 	private Aeropuerto vueloDestino;
 	private Vuelo vuelo;
@@ -146,13 +146,13 @@ public class Vuelo {
 		this.vueloOrigen = vueloOrigen;
 	}
 
-	@OneToMany(mappedBy = "vueloEscalas", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public List<Aeropuerto> getListaEscalas() {
-		return listaEscalas;
+	
+	public int getNumEscalas() {
+		return numEscalas;
 	}
 
-	public void setListaEscalas(List<Aeropuerto> listaEscalas) {
-		this.listaEscalas = listaEscalas;
+	public void setNumEscalas(int numEscalas) {
+		this.numEscalas = numEscalas;
 	}
 
 	@OneToMany(mappedBy = "vueloLlegada", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
