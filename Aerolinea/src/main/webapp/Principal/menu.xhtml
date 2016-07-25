@@ -6,6 +6,11 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 	<h:form>
 		<p:menubar class="menubar">
+			<p:submenu label="Registrar" icon="ui-icon-person">
+				<p:menuitem value="Nuevo" icon="ui-icon-contact"
+					url="/Pasajero/Pasajero.xhtml" />				
+			</p:submenu>
+			
 			<p:submenu label="Consulta de Vuelos" icon="ui-icon-suitcase">
 				<p:menuitem value="Horarios" icon="ui-icon-clock"
 					url="/Horarios/Horarios.xhtml" />
@@ -19,10 +24,15 @@
 				<p:menuitem value="Compra de Voletos" url="#" icon="ui-icon-tag" />
 			</p:submenu>
 
+<<<<<<< HEAD
+			<p:menuitem value="Quit" url="/Principal/Principal.xhtml" icon="ui-icon-home"/>
+				
+=======
 			<p:submenu label="Quit" icon="ui-icon-home">
 				<p:menuitem value="Log Out" url="/Principal/Principal.xhtml"
 					icon="ui-icon-unlocked"></p:menuitem>
 			</p:submenu>
+>>>>>>> refs/remotes/origin/master
 		</p:menubar>
 	</h:form>
 </ui:composition>

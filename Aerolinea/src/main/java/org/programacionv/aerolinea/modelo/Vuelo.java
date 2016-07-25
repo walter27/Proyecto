@@ -30,13 +30,16 @@ public class Vuelo {
 	private List<Tarifa> listaTarifasOfertas;
 	private List<Asiento> listaAsientos;
 	private List<Dia> listaDiasSalida;
-	private List<Dia> listaDiasLlegada;
+	private Hora horaSalida;
+	private Hora horaLlegada;
 	private Set<Reserva> listaReservas = new HashSet<Reserva>();
 	private Set<Avion> listaAviones = new HashSet<Avion>();
 	private List<Aeropuerto> listaEscalas;
 	private Aeropuerto vueloOrigen;
+	private Aeropuerto vueloDestino;
 	private Vuelo vuelo;
 
+	
 	public Vuelo() {
 
 	}
@@ -50,6 +53,22 @@ public class Vuelo {
 
 	public void setId(int id) {
 		this.id = id;
+	}	
+
+	public Hora getHoraSalida() {
+		return horaSalida;
+	}
+
+	public void setHoraSalida(Hora horaSalida) {
+		this.horaSalida = horaSalida;
+	}
+
+	public Hora getHoraLlegada() {
+		return horaLlegada;
+	}
+
+	public void setHoraLlegada(Hora horaLlegada) {
+		this.horaLlegada = horaLlegada;
 	}
 
 	public String getNumeroVuelo() {
@@ -145,14 +164,6 @@ public class Vuelo {
 		this.listaDiasSalida = listaDiasSalida;
 	}
 
-	@OneToMany(mappedBy = "vueloSalida", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	public List<Dia> getListaDiasLlegada() {
-		return listaDiasLlegada;
-	}
-
-	public void setListaDiasLlegada(List<Dia> listaDiasLlegada) {
-		this.listaDiasLlegada = listaDiasLlegada;
-	}
 
 	@ManyToOne
 	@JoinColumn(referencedColumnName = "ID_VUEL_PK")
@@ -162,6 +173,16 @@ public class Vuelo {
 
 	public void setVuelo(Vuelo vuelo) {
 		this.vuelo = vuelo;
+	}
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID_AERP_PK")
+	public Aeropuerto getVueloDestino() {
+		return vueloDestino;
+	}
+
+	public void setVueloDestino(Aeropuerto vueloDestino) {
+		this.vueloDestino = vueloDestino;
 	}
 
 }

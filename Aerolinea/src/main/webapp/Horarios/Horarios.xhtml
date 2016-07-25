@@ -18,6 +18,8 @@
 				<h:panelGrid id="grid1" columns="1">
 
 <h1> HORARIOS </h1>
+Consultá los horarios programados de los vuelosdesde el día de la fecha hasta
+11 meses en avance y decidí tu próximo destino turístico nacional o internacional.
 					<h:panelGrid id="grid" columns="2" >
 
 						<p:outputLabel value="Origen:"></p:outputLabel>
@@ -89,10 +91,14 @@
 						
 					</h:panelGrid>
 
-					<p:commandButton value="Buscar" update="grid growl" class="button"
-						style="width:100%">
-					</p:commandButton>
+					
 
+		         <p:commandButton value="BUSCAR" oncomplete="PF('dlgHorario').show();;"
+						 update="grid growl" class="button"
+						style="width:100%" />
+					
+					<ui:include src="/Horarios/dlgHorario.xhtml" />
+			
 
 				</h:panelGrid>
 				<p:galleria panelWidth="610" panelHeight="328" showCaption="false">
